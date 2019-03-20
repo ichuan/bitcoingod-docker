@@ -12,7 +12,8 @@ RUN add-apt-repository -y ppa:bitcoin/bitcoin && apt-get update && apt-get insta
 RUN apt-get install -y libssl1.0-dev
 
 RUN wget https://github.com/BitcoinGod/BitcoinGod/archive/v0.1.5.0.tar.gz -O - | tar xzf -
-RUN cd BitcoinGod-* && ./autogen.sh && ./configure --without-gui && make && mv src/bitcoin{godd,god-cli,-tx} /opt/coin
+RUN cd BitcoinGod-* && ./autogen.sh && ./configure --without-gui && make
+RUN cd /opt/coin/BitcoinGod-* && mv src/bitcoingodd src/bitcoingod-cli src/bitcoin-tx /opt/coin/
 
 # cleanup
 RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /opt/coin/BitcoinGod-*
