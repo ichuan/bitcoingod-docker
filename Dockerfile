@@ -15,7 +15,7 @@ RUN wget https://github.com/BitcoinGod/BitcoinGod/archive/v0.1.5.0.tar.gz -O - |
 RUN cd BitcoinGod-* && ./autogen.sh && ./configure --without-gui && make && mv src/bitcoin{godd,god-cli,-tx} /opt/coin
 
 # cleanup
-RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /opt/coin/BitcoinGod-*
 
 VOLUME ["/opt/coin/data", "/opt/coin/coin.conf"]
 
