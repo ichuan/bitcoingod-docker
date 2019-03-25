@@ -6,6 +6,8 @@ FROM ubuntu:18.04
 RUN mkdir -p /opt/coin
 WORKDIR /opt/coin
 
+EXPOSE 18886
+
 RUN apt-get update && apt-get install -y wget build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev software-properties-common
 RUN add-apt-repository -y ppa:bitcoin/bitcoin && apt-get update && apt-get install -y libdb4.8-dev libdb4.8++-dev libminiupnpc-dev
 # fix https://github.com/BitcoinGod/BitcoinGod/issues/1
